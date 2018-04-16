@@ -8,9 +8,15 @@ def main():
     short_string_len = 5
     # brute_force(long_string_len, short_string_len)
 
+    print_timestamp()
     result_dict = count_calculation(long_string_len, short_string_len)
     possibility = calculate_possibility(result_dict, long_string_len)
     print(possibility)
+
+def print_timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    print(st)
 
 def calculate_possibility(result_dict, long_string_len):
     possibility = sum([v/(2**long_string_len)
@@ -26,9 +32,7 @@ def count_calculation(long_string_len, short_string_len):
         short_string = ''.join(str(x) for x in short_list)
         final_count = iterate_position(long_list, short_list, 0, 0)
         result_dict[short_string] = final_count
-        ts = time.time()
-        st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-        print(st)
+        print_timestamp()
         print(str(short_list)+":"+str(final_count))
     return result_dict
 
