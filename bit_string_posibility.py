@@ -18,11 +18,15 @@ def possibility_calculation(long_string_len, short_string_len):
     short_list = [1, 1, 0]
     # for short_list in BitString(short_string_len):
 
-    result = 0
-    for i in range(1):
-        result += count_appear(long_list, short_list, i, 0)
-        print(result)
+    final_count = iterate_position(long_list, short_list, 0, 0)
+    return final_count
 
+
+def iterate_position(long_list, short_list, start, count):
+    result = 0
+    for i in range(start, len(long_list)):
+        result += count_appear(long_list, short_list, i, count)
+    # print(result)
     return result
 
 
@@ -33,11 +37,13 @@ def count_appear(current_list, short_list, start, short_list_count):
         short_list_count += 1
         minus_one_count = sum([1 for e in result_list if e == -1])
         possibliity = (-1)**(short_list_count+1) * (2**minus_one_count)
-        print(possibliity)
-        possibliity += count_appear(result_list,
-                                    short_list, position+1, short_list_count)
+        print(result_list)
+        print("###"+str(possibliity) + ":" + str(position)+":"+str(start))
+        possibliity += iterate_position(result_list,
+                                        short_list, position+1, short_list_count)
         return possibliity
     else:
+        print("@@@"+str(start) + ":" + str(short_list_count))
         return 0
 
 
