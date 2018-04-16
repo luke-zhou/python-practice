@@ -30,10 +30,15 @@ def count_calculation(long_string_len, short_string_len):
     # short_list = [1, 1, 0]
     for short_list in BitString(short_string_len):
         short_string = ''.join(str(x) for x in short_list)
-        final_count = iterate_position(long_list, short_list, 0, 0)
-        result_dict[short_string] = final_count
+        revert_list =[1 if x==0 else 0 for x in short_list]
+        revert_string = ''.join(str(x) for x in revert_list)
+        if revert_string in result_dict:
+            result_dict[short_string] = result_dict[revert_string]
+        else:
+            final_count = iterate_position(long_list, short_list, 0, 0)
+            result_dict[short_string] = final_count
         print_timestamp()
-        print(str(short_list)+":"+str(final_count))
+        print(str(short_list)+":"+str(result_dict[short_string]))
     return result_dict
 
 
