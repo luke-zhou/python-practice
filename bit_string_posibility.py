@@ -1,4 +1,6 @@
 from bit_string import BitString
+import datetime
+import time
 
 
 def main():
@@ -24,6 +26,9 @@ def count_calculation(long_string_len, short_string_len):
         short_string = ''.join(str(x) for x in short_list)
         final_count = iterate_position(long_list, short_list, 0, 0)
         result_dict[short_string] = final_count
+        ts = time.time()
+        st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+        print(st)
         print(str(short_list)+":"+str(final_count))
     return result_dict
 

@@ -1,9 +1,16 @@
+import datetime
+import time
+
 def main():
     original_list = [0, 1, 2, 3, 4]
     copied_list = original_list[:]
     copied_list[3] = 20
     print(original_list)
     print(copied_list)
+
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    print(st)
 
 
 def function1():
