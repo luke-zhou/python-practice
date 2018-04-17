@@ -27,6 +27,8 @@ def main():
     possibility = calculate_possibility(result_dict)
     print(possibility)
 
+    print_timestamp()
+
 
 if __name__ == '__main__':
     main()
