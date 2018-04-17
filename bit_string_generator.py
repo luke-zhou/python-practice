@@ -1,4 +1,4 @@
-class BitString(object):
+class BitStringGenerator(object):
     def __init__(self, len):
         self.len = len
         self.max = 2**len
