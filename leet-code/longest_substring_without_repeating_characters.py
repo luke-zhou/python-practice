@@ -1,22 +1,34 @@
-def lengthOfLongestSubstring(s:str):
-    max = len(set(s))
-            
-    end = 1
-    start = 0
-    longest = 0
-    while end-start<=max and start<len(s) and end<=len(s):
-        test_string = s[start:end]
-        print(end)
-        print(start)
-        print(test_string)
-        if len(test_string)>len(set(test_string)):
-            start += 1
-            end += 1
-        else:
-            longest = end-start
-            end += 1
-    
-    return longest    
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        max = len(set(s))
+
+        end = 1
+        start = 0
+        longest = 0
+        while end-start<=max and start<len(s) and end<=len(s):
+            test_string = s[start:end]
+            duplicate_index = self.findDuplicate(test_string)
+            if duplicate_index !=-1:
+                start += 1 + duplicate_index
+                end += 1 + duplicate_index
+            else:
+                longest = end-start
+                end += 1
+
+        return longest     
+        
+    def findDuplicate(self, s: str) -> int:
+        index_dic = {}
+        for i, c in enumerate(s):
+            if c not in index_dic:
+                index_dic[c] =i
+            else:
+                return index_dic[c]
+        
+        return -1 
 
 if __name__=='__main__':
-    print(lengthOfLongestSubstring('pwwkew'))
+    result = Solution().lengthOfLongestSubstring('abcadc')
+    print(result)
+    # result = findDuplicate('pabkww')
+    # print(result)
