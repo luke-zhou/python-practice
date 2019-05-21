@@ -4,7 +4,7 @@ def lengthOfLongestSubstring(s:str):
     end = 1
     start = 0
     longest = 0
-    while end-start<=max and start<len(s) and start+end<=len(s):
+    while end-start<=max and start<len(s) and end<=len(s):
         test_string = s[start:end]
         print(end)
         print(start)
